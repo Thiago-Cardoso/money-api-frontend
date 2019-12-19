@@ -8,10 +8,12 @@ import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 
 import { AppComponent } from './app.component';
+import { LaunchsSearchComponent } from './launchs-search/launchs-search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LaunchsSearchComponent
   ],
   imports: [
     BrowserModule,
