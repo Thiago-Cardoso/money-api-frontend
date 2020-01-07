@@ -1,0 +1,70 @@
+<div class="container">
+    <form #lanuchForm="ngForm" autocomplete="off">
+        <div class="ui-g">
+          <div class="ui-g-12">
+              <h1>New Launch</h1>
+          </div>
+
+          <div class="ui-g-12">
+              <p-selectButton [options]="types" #type></p-selectButton>
+          </div>
+
+              <div class="ui-g-6 ui-md-3 ui-fluid">
+
+                <app-message [control]="duedate" error="required" text=" Put a duedate"></app-message>
+
+                <label>Due Date</label>
+                <p-calendar dateFormat="dd/mm/yy" name="duedate" ngModel #duedate="ngModel" required
+                [readonlyInput]="true"
+                [showIcon]="false"></p-calendar>
+              </div>
+
+              <div class="ui-g-6 ui-md-3 ui-fluid">
+                <label>{{ type.value  === 'RECIPE' ? 'Revicement' : 'Payment'}}</label>
+                <p-calendar dateFormat="dd/mm/yy"
+                [readonlyInput]="true"
+                [showIcon]="false"></p-calendar>
+              </div>
+
+              <div class="ui-g-12 ui-md-9 ui-fluid">
+                <label>Description </label>
+                <!-- <label>Description {{ description.errors | json }}</label> -->
+
+                <app-message [control]="description" error="required" text=" Put a description"></app-message>
+
+                <app-message [control]="description" error="minlength" text=" Mín of {{description.errors?.minlength?.requiredLength}}"></app-message>
+
+                <input pInputText type="text" name="description" ngModel #description="ngModel" required minlength="5">
+              </div>
+
+
+              <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Price</label>
+                <input pInputText type="text" placeholder="0,00">
+              </div>
+
+
+              <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Category</label>
+                <p-dropdown [options]="categories" placeholder="Select"></p-dropdown>
+              </div>
+
+              <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>People {{ people.value }}</label>
+                <p-dropdown [options]="peoples"   #people placeholder="Select"></p-dropdown>
+              </div>
+
+              <div class="ui-g-12 ui-fluid">
+                <label>Observation</label>
+                <textarea pInputTextarea type="text" rows="3"></textarea>
+              </div>
+
+              <div class="ui-g-12">
+                <button pButton type="submit" label="Salvar"></button>
+                <button pButton type="submit" style="margin-left: 10px;" label="Novo" class="ui-button-info"></button>
+                <a href="javascript;;" style="margin-left: 10px;">Voltar para a pesquisa</a>
+              </div>
+
+        </div>
+    </form>
+</div>
